@@ -1,0 +1,1 @@
+Required jars(junit.jar,lucene-core...) can be found in top level of quicksearch.jar, and they must be copied here before any work with sources. 
