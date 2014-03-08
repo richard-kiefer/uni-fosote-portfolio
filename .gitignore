@@ -1,0 +1,5 @@
+# ignore files created during program runtime
+/index_location
+
+# ignore build files
+/bin/
