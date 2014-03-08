@@ -65,7 +65,7 @@ public class MasterTest
 				tmp = search.getSearchTerms("test", 10);
 				assertEquals(searchFailed, 1, tmp.size());
 				
-				String expected = "/home/davors/SearcherGit/Search/Searcher/test_data/subdir1/Test.pdf";
+				String expected = System.getProperty("user.dir") + "/test_data/subdir1/Test.pdf";
 				assertEquals(pathMissMatch ,expected, tmp.poll());
 				
 				search.close();
@@ -85,7 +85,7 @@ public class MasterTest
 				Searcher search = new Searcher(indexDir);
 				Queue<String> tmp = search.getSearchTerms("+cat +dog", 10);
 				
-				String expected = "/home/davors/SearcherGit/Search/Searcher/test_data/subdir1/subdir2/file1.file1.pdf";
+				String expected = System.getProperty("user.dir") + "/test_data/subdir1/subdir2/file1.file1.pdf";
 				assertEquals(termNotFound , expected, tmp.poll());
 				
 				
