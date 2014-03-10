@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="/home/rkiefer/Bildung/Studium Trier/ws 13-14/fortgeschrittene-softwaretechnik/portfolio/davs-quicksearch/libs/lucene-spellchecker-3.0.1.jar"/>
 	<classpathentry kind="lib" path="/home/rkiefer/Bildung/Studium Trier/ws 13-14/fortgeschrittene-softwaretechnik/portfolio/davs-quicksearch/libs/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
 	<classpathentry kind="lib" path="/home/rkiefer/Bildung/Studium Trier/ws 13-14/fortgeschrittene-softwaretechnik/portfolio/davs-quicksearch/libs/tika-app-1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

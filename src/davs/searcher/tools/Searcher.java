@@ -62,7 +62,7 @@ public class Searcher
 			
 			Query query = null;
 			
-			String[] fields = {IndexField.filename , IndexField.fulltext};
+			String[] fields = {IndexFieldTypes.filename , IndexFieldTypes.fulltext};
 			
 			MultiFieldQueryParser queryParser = new MultiFieldQueryParser(currentVersion, fields, getAnalyzer());
 			
@@ -82,7 +82,7 @@ public class Searcher
 				{
 					ScoreDoc scoreDoc = hits.scoreDocs[i];
 					Document doc = getIndexSearcher().doc(scoreDoc.doc);
-					results.add(doc.get(IndexField.filepath));
+					results.add(doc.get(IndexFieldTypes.filepath));
 				}
 			
 			
