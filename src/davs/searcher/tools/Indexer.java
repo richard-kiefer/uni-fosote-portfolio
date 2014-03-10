@@ -41,16 +41,7 @@ public class Indexer {
         // Index will always be stored in a secret folder named .index
         String finalDir = IndexUtils.getValidIndexPath(indexDir);
 
-        File f = new File(finalDir);
-        boolean b = true;
 
-        if (!f.exists() || !f.isDirectory())
-            b = (new File(finalDir)).mkdirs();
-        else
-            b = true;
-
-        if (!b)
-            throw new IOException();
 
         setIndexDir(finalDir);
         setAnalyzer(new StopAnalyzer(currentVersion)); // name1a.name2b_name3...
@@ -233,7 +224,7 @@ public class Indexer {
         return indexDir;
     }
 
-    private void setIndexDir(String indexDir) {
+    private void setIndexDir(String indexDir) throws IOException {
         this.indexDir = indexDir;
     }
 
