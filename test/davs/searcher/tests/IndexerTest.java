@@ -1,4 +1,4 @@
-package davs.searcher.tools;
+package davs.searcher.tests;
 
 import static org.junit.Assert.*;
 
@@ -30,25 +30,7 @@ public class IndexerTest {
             fail("Non-existing directory was not created.");
         } else {
             // success; clean up
-            deleteDirectory(dir);
+            TestUtils.deleteDirectory(dir);
         }
     }
-    
-    
-    // Helper function. Deletes a directory with all its content.
-    // Thanks to http://www.rgagnon.com/javadetails/java-0483.html
-    static public boolean deleteDirectory(File path) {
-        if( path.exists() ) {
-          File[] files = path.listFiles();
-          for(int i=0; i<files.length; i++) {
-             if(files[i].isDirectory()) {
-               deleteDirectory(files[i]);
-             }
-             else {
-               files[i].delete();
-             }
-          }
-        }
-        return( path.delete() );
-      }
 }
