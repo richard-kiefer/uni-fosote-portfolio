@@ -10,7 +10,7 @@ public aspect Debug {
     private static final LineBorder redBorder = new LineBorder(Color.red);
     private static final LineBorder greenBorder = new LineBorder(Color.green, 2);
 
-    after(JComponent c): set(private JComponent+ SearchScreen.j*) && args(c) {
+    after(JComponent c): set(private JComponent+ SearchScreen.*) && args(c) {
         String previousTooltip = c.getToolTipText();
         if (previousTooltip == null) {
             previousTooltip = "";
