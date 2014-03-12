@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.Queue;
 
 import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.ParallelGroup;
+import javax.swing.GroupLayout.SequentialGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -162,28 +164,22 @@ public class SearchScreen extends javax.swing.JFrame {
         JPanel Row2Panel = buildRow2();
         JPanel Row3Panel = buildRow3();
         
-        jPanel3Layout
-                .setHorizontalGroup(jPanel3Layout
-                        .createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(
-                                jPanel3Layout
-                                        .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Row1Panel)
-                                        .addComponent(Row2Panel)
-                                        .addComponent(Row3Panel))
-                        .addContainerGap());
+        jPanel3Layout.setHorizontalGroup(jPanel3Layout
+                .createSequentialGroup()
+                .addContainerGap()
+                .addGroup(buildRowsHorizontally(jPanel3Layout,
+                                                Row1Panel,
+                                                Row2Panel,
+                                                Row3Panel))
+                .addContainerGap());
 
-        jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(
-                javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-                jPanel3Layout.createSequentialGroup().addContainerGap()
-                        .addComponent(Row1Panel)
-                        .addGap(18, 18, 18)
-                        .addComponent(Row2Panel)
-                        .addGap(18, 18, 18)
-                        .addComponent(Row3Panel)
-                        .addContainerGap(33, Short.MAX_VALUE)));
+        jPanel3Layout.setVerticalGroup(jPanel3Layout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(buildRowsVertically(jPanel3Layout,
+                                              Row1Panel,
+                                              Row2Panel,
+                                              Row3Panel)
+                                              .addContainerGap(33, Short.MAX_VALUE)));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Hits"));
 
@@ -260,6 +256,28 @@ public class SearchScreen extends javax.swing.JFrame {
 
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private SequentialGroup buildRowsVertically(
+            javax.swing.GroupLayout jPanel3Layout, JPanel Row1Panel,
+            JPanel Row2Panel, JPanel Row3Panel) {
+        return jPanel3Layout.createSequentialGroup().addContainerGap()
+                .addComponent(Row1Panel)
+                .addGap(18, 18, 18)
+                .addComponent(Row2Panel)
+                .addGap(18, 18, 18)
+                .addComponent(Row3Panel);
+    }
+
+    private ParallelGroup buildRowsHorizontally(
+            javax.swing.GroupLayout jPanel3Layout, JPanel Row1Panel,
+            JPanel Row2Panel, JPanel Row3Panel) {
+        return jPanel3Layout
+                .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Row1Panel)
+                .addComponent(Row2Panel)
+                .addComponent(Row3Panel);
+    }
 
     private JPanel buildRow1() {
         JPanel panel = new JPanel();
