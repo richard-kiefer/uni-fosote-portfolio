@@ -1,6 +1,7 @@
 package davs.searcher.gui;
 
 import java.awt.Color;
+import java.io.IOException;
 
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
@@ -8,15 +9,35 @@ import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import davs.searcher.program.MainProgram;
+import davs.searcher.tools.SpellCheck;
 
 public aspect SuggestionsAspect {
+    
+    // Since spell checking is expensive operation, hold only one copy
+    private static SpellCheck spellCheck;
+    private static boolean enabled;
     
     private JLabel jLabel3 = new JLabel();
     private JLabel jLabel4 = new JLabel();
     private JLabel jLabel5 = new JLabel();
     private JLabel jLabel6 = new JLabel();
     private JPanel suggestionsRow;
+    
+    static {
+        enabled = true;
+
+        try {
+            spellCheck = new SpellCheck();
+        } catch (IOException e) {
+            // If spellCheck is not initialized, don't even bother with
+            // suggestions
+            enabled = false;
+
+            System.err.println("Spell checking is not supported");
+            System.err
+                    .println("Make sure file dict is in your working directory");
+        }
+    }
 
     
     private void initSuggestionsComponents(final SearchScreen _this) {
@@ -86,35 +107,31 @@ public aspect SuggestionsAspect {
     
     
     private void updateSuggestions(final SearchScreen _this, String newTerm) {
-        String[] suggestions;
-        if (MainProgram.isSpellCheckEnabled)
-            suggestions = MainProgram.spellCheck
-                    .getSpellSuggestions(newTerm, 3);
-        else {
-            suggestions = null;
+        if (!enabled) {
+            return;
         }
 
-        if (suggestions != null && suggestions.length >= 1
-                && MainProgram.isSpellCheckEnabled) {
+        String[] suggestions = spellCheck.getSpellSuggestions(newTerm, 3);
+        if (suggestions == null) {
+            return;
+        }
+
+        jLabel4.setText("");
+        jLabel5.setText("");
+        jLabel6.setText("");
+        
+        if (suggestions.length >= 1) {
             jLabel4.setText(suggestions[0]);
             jLabel4.setForeground(Color.BLUE);
-        } else
-            jLabel4.setText("");
-
-        if (suggestions != null && suggestions.length >= 2
-                && MainProgram.isSpellCheckEnabled) {
+        }
+        if (suggestions.length >= 2) {
             jLabel5.setText(suggestions[1]);
             jLabel5.setForeground(Color.BLUE);
-        } else
-            jLabel5.setText("");
-
-        if (suggestions != null && suggestions.length >= 3
-                && MainProgram.isSpellCheckEnabled) {
+        }
+        if (suggestions.length >= 3) {
             jLabel6.setText(suggestions[2]);
             jLabel6.setForeground(Color.BLUE);
-        } else
-            jLabel6.setText("");
-        // end spell check
+        }
     }
     after(SearchScreen _this, String newTerm):
         call(private void SearchScreen.mouseClicked(String))
