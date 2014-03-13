@@ -73,10 +73,6 @@ public class SearchScreen extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -132,28 +128,6 @@ public class SearchScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Similar Words :");
-
-        jLabel4.setText("Suggestion1");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-
-        jLabel5.setText("Suggestion2");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
-
-        jLabel6.setText("Suggestion3");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(
                 jPanel3);
@@ -162,24 +136,20 @@ public class SearchScreen extends javax.swing.JFrame {
         
         JPanel Row1Panel = buildRow1();
         JPanel Row2Panel = buildRow2();
-        JPanel Row3Panel = buildRow3();
-        
         jPanel3Layout.setHorizontalGroup(jPanel3Layout
                 .createSequentialGroup()
                 .addContainerGap()
                 .addGroup(buildRowsHorizontally(jPanel3Layout,
                                                 Row1Panel,
-                                                Row2Panel,
-                                                Row3Panel))
+                                                Row2Panel))
                 .addContainerGap());
 
         jPanel3Layout.setVerticalGroup(jPanel3Layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(buildRowsVertically(jPanel3Layout,
                                               Row1Panel,
-                                              Row2Panel,
-                                              Row3Panel)
-                                              .addContainerGap(33, Short.MAX_VALUE)));
+                                              Row2Panel)
+                          .addContainerGap(33, Short.MAX_VALUE)));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Hits"));
 
@@ -257,26 +227,25 @@ public class SearchScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private SequentialGroup buildRowsVertically(
-            javax.swing.GroupLayout jPanel3Layout, JPanel Row1Panel,
-            JPanel Row2Panel, JPanel Row3Panel) {
-        return jPanel3Layout.createSequentialGroup().addContainerGap()
-                .addComponent(Row1Panel)
-                .addGap(18, 18, 18)
-                .addComponent(Row2Panel)
-                .addGap(18, 18, 18)
-                .addComponent(Row3Panel);
-    }
+
 
     private ParallelGroup buildRowsHorizontally(
             javax.swing.GroupLayout jPanel3Layout, JPanel Row1Panel,
-            JPanel Row2Panel, JPanel Row3Panel) {
+            JPanel Row2Panel) {
         return jPanel3Layout
                 .createParallelGroup(
                         javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Row1Panel)
-                .addComponent(Row2Panel)
-                .addComponent(Row3Panel);
+                .addComponent(Row2Panel);
+    }
+
+    private SequentialGroup buildRowsVertically(
+            javax.swing.GroupLayout jPanel3Layout, JPanel Row1Panel,
+            JPanel Row2Panel) {
+        return jPanel3Layout.createSequentialGroup().addContainerGap()
+                .addComponent(Row1Panel)
+                .addGap(18, 18, 18)
+                .addComponent(Row2Panel);
     }
 
     private JPanel buildRow1() {
@@ -328,32 +297,7 @@ public class SearchScreen extends javax.swing.JFrame {
         return panel;
     }
     
-    private JPanel buildRow3() {
-        JPanel panel = new JPanel();
-        GroupLayout layout = new GroupLayout(panel);
-        panel.setLayout(layout);
-        layout.setHorizontalGroup(layout
-                .createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE,
-                        254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(
-                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE,
-                        216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(
-                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE,
-                        249, javax.swing.GroupLayout.PREFERRED_SIZE));
-        layout.setVerticalGroup(layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel3)
-                .addComponent(jLabel4)
-                .addComponent(jLabel5)
-                .addComponent(jLabel6));
-        return panel;
-    }
+
     
 
 
@@ -384,21 +328,8 @@ public class SearchScreen extends javax.swing.JFrame {
 
     }// GEN-LAST:event_jButton2MouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {
 
-        mouseClicked(jLabel4.getText());
-    }
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {
-
-        mouseClicked(jLabel5.getText());
-    }
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {
-
-        mouseClicked(jLabel6.getText());
-    }
-
+    
     /**
      * @param args
      *            the command line arguments
@@ -454,10 +385,6 @@ public class SearchScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -467,9 +394,15 @@ public class SearchScreen extends javax.swing.JFrame {
 
     // End of variables declaration//GEN-END:variables
 
+    // package-private; does not conflict with mouseClicked
+    // within MouseAdapter.mouseClicked
+    void mouseClicked2(String term) {
+        mouseClicked(term);
+    }
+    
     private void mouseClicked(String term) {
 
-        String newTerm = term.replaceAll("^\\s+", "");
+        String newTerm = leftTrim(term);
         SearchScreenHelper sh = null;
 
         try {
@@ -486,33 +419,6 @@ public class SearchScreen extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        // spell check
-        if (MainProgram.isSpellCheckEnabled)
-            suggestions = MainProgram.spellCheck
-                    .getSpellSuggestions(newTerm, 3);
-
-        if (suggestions != null && suggestions.length >= 1
-                && MainProgram.isSpellCheckEnabled) {
-            jLabel4.setText(suggestions[0]);
-            jLabel4.setForeground(Color.BLUE);
-        } else
-            jLabel4.setText("");
-
-        if (suggestions != null && suggestions.length >= 2
-                && MainProgram.isSpellCheckEnabled) {
-            jLabel5.setText(suggestions[1]);
-            jLabel5.setForeground(Color.BLUE);
-        } else
-            jLabel5.setText("");
-
-        if (suggestions != null && suggestions.length >= 3
-                && MainProgram.isSpellCheckEnabled) {
-            jLabel6.setText(suggestions[2]);
-            jLabel6.setForeground(Color.BLUE);
-        } else
-            jLabel6.setText("");
-        // end spell check
-
         if (hits == null)
             model.setRowCount(0);
         else if (hits.isEmpty())
@@ -526,6 +432,12 @@ public class SearchScreen extends javax.swing.JFrame {
         }
 
     }
+
+    static String leftTrim(String term) {
+        return term.replaceAll("^\\s+", "");
+    }
+
+
 
     private void getTerm() {
         String term = null;
