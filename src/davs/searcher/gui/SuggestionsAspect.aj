@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import davs.searcher.tools.SpellCheck;
 
-public aspect SuggestionsAspect {
+privileged public aspect SuggestionsAspect {
     
     // Since spell checking is expensive operation, hold only one copy
     private static SpellCheck spellCheck;
@@ -133,11 +133,18 @@ public aspect SuggestionsAspect {
             jLabel6.setForeground(Color.BLUE);
         }
     }
+    private void SearchScreen.updateSearchField(String s) {
+        // accesses private member. Makes privileged aspect necessary.
+        this.jTextField2.setText(s);
+    }
     after(SearchScreen _this, String newTerm):
         call(private void SearchScreen.mouseClicked(String))
      && this(_this)
      && args(newTerm) {
         updateSuggestions(_this, SearchScreen.leftTrim(newTerm));
+        // Fixes usability bug when choosing a suggestion; suggestion gets
+        // now copied to search field.
+        _this.updateSearchField(newTerm);
     }
     
    
