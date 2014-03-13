@@ -33,7 +33,6 @@ public class SearchScreen extends javax.swing.JFrame {
 
     private davs.searcher.program.SearchScreenHelper searchHelper;
 
-    String[] suggestions;
 
     /**
      * Creates new form SearchScreen
